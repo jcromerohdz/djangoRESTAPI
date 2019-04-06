@@ -28,5 +28,5 @@ urlpatterns = [
     path('json/cbv2/', JsonCBV2.as_view()),
     path('', json_example_view),
     path('json/serialized/list/', SerializedListView.as_view()),
-    path('json/serialized/view/', SerializedDetailView.as_view()),
+    path('json/serialized/detail/', SerializedDetailView.as_view()),
 ]
