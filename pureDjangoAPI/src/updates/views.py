@@ -38,16 +38,17 @@ class JsonCBV2(JsonResponseMixin, View):
         }
         return self.render_to_json_response(data)
 
-class SirializedView(View):
+class SerializedDetailView(View):
     def get(self, reques, *args, **kwargs):
         obj = Update.objects.get(id=1)
-        data = serialize("json", [obj,], fields=('user', 'content'))
-        json_data = data
+        #data = serialize("json", [obj,], fields=('user', 'content'))
+        json_data = obj.serialize()
         return HttpResponse(json_data, content_type='application/json')
 
-class SirializedListView(View):
+class SerializedListView(View):
     def get(self, reques, *args, **kwargs):
         qs = Update.objects.all()
-        data = serialize("json", qs, fields=('user', 'content'))
-        json_data = data
+        #data = serialize("json", qs, fields=('user', 'content'))
+        #json_data = data
+        json_data = Update.objects.all().serialize()
         return HttpResponse(json_data, content_type='application/json')
