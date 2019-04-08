@@ -14,7 +14,7 @@ class UpdateQuerySet(models.QuerySet):
     #     qs = self
     #     return serialize('json', qs, fields=('user', 'content', 'image'))
     def serialize(self):
-        list_values = list(self.values('user','content','image'))
+        list_values = list(self.values('user','content','image', 'id'))
         return json.dumps(list_values)
 
 class UpdateManager(models.Manager):
@@ -39,6 +39,7 @@ class Update(models.Model):
         except Exception as e:
             image = ""
         data = {
+            "id": self.id,
             "content": self.content,
             "user": self.user.id,
             "image": image
