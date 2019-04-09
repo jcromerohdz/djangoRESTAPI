@@ -7,7 +7,7 @@ from updates.models import Update as UpdateModel
 # Creating, Updating, Deleting, Retrieving (1) -- Update Model
 class UpdateModelDetailAPIView(View):
     """
-    Retrieve, Update, Delete  -->
+    Retrieve, Update, Delete  --> Object
     """
     def  get(self, request, id, *args, **kwargs):
         obj = UpdateModel.objects.get(id=id)
@@ -23,6 +23,7 @@ class UpdateModelDetailAPIView(View):
     def delete(self, request, *args, **kwargs):
         return HttpResponse(json_data, content_type='application/json')
 
+
 class UpdateModelListAPIView(View):
     """
     List views
@@ -30,10 +31,7 @@ class UpdateModelListAPIView(View):
     """
     def get(self, request, *args, **kwargs):
         qs = UpdateModel.objects.all()
-        print("QUERY SET")
-        print(qs)
         json_data = qs.serialize()
-        print(json_data)
         return HttpResponse(json_data, content_type='application/json')
 
     def post(self, request, *args, **kwargs):
