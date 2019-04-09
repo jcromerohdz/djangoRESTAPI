@@ -19,4 +19,20 @@ def get_list():
     return data
 
 
-print(get_list())
+def create_update():
+    new_data = {
+        'user':1,
+        'content': "Another updated"
+    }
+    r = requests.post(BASE_URL + ENDPOINT, data=new_data)
+    print("$$$$$$$$$$")
+    print(r.status_code)
+    print(r.headers)
+    if r.status_code == requests.codes.ok:
+        # print(r.json())
+        return r.json()
+    return r.text
+
+
+print(create_update())
+# print(get_list())
