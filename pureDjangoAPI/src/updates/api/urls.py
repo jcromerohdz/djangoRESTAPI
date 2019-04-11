@@ -6,5 +6,5 @@ from .views import (UpdateModelDetailAPIView,
 
 urlpatterns = [
     path('', UpdateModelListAPIView.as_view()),
-    re_path(r'^(?P<id>\d+)/$', UpdateModelDetailAPIView.as_view()),
+    re_path(r'^(?P<id>\d+)$', UpdateModelDetailAPIView.as_view()),
 ]
